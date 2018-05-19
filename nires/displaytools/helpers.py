@@ -102,7 +102,7 @@ def return_instrument(instrument_string):
 
 
 def construct_cursor(x, y, size=15, group="group1", label="1", color="white"):
-    font = "helvetica 16 normal"
+    font = "helvetica 14 normal"
     regions = "regions command '{{box {} {} {} {} # " \
               "color={} tag={} width=2 font=\"{}\" text=\"{}\"}}'".format(
                 x, y, size, size, color, group, font, label)

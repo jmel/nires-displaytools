@@ -1,65 +1,102 @@
 #!/usr/bin/env python
 # Control the cursors on the NIRES viewer ds9 window
 
-import sys
+import click
+import logging
+import random
+
 from nires.displaytools.ds9 import Ds9
 
-argc = len(sys.argv)
+COLORS = ["white",
+          "yellow",
+          "cyan",
+          "blue",
+          "black",
+          "orange",
+          "magenta",
+          "green",
+          "red",
+          "brown",
+]
+LOG = logging.getLogger(__name__)
 
-if argc == 1:
-    sys.exit()
 
-color = ["white",
-         "yellow",
-         "cyan",
-         "blue",
-         "magenta",
-         "green",
-         "orange",
-         "red",
-         "brown",
-         "black"]
-
-cu_number = sys.argv[1]
-
-ds9 = Ds9("Viewer")
-
-if cu_number.lower() == 'all':
-    ds9.cursor_delete(group="all")
-    if argc == 2:
-        for i in range(10):
-            ds9.cursor_disp(540 + i * 50, 600, 15, group="group" + str(i), label=str(i), color=color[i])
-    sys.exit()
-
-if cu_number.lower() == 'save':
-    if argc == 3:
-        region_file = sys.argv[2]
+def display_cursor(ds9, cursor):
+    """
+    method to display cursors on viewer
+    :param ds9:
+    :param cursor:
+    :return:
+    """
+    if cursor == 'all':
+        ds9.cursor_delete(group="all")
+        for i in range(6):
+            ds9.cursor_disp(800, 100 + i * 100, 15,
+                            group="group" + str(i),
+                            label=str(i),
+                            color=COLORS[i])
     else:
-        region_file = 'ds9.reg'
-    ds9.region_save(region_file)
+        cu_x = 800
+        cu_y = 100 + int(cursor[0]) * 100
+        ds9.cursor_delete(group="group" + cursor)
+        ds9.cursor_disp(cu_x, cu_y, 15,
+                        group="group" + cursor,
+                        label=cursor,
+                        color=COLORS[int(cursor)])
 
-if argc == 3:
-    command = sys.argv[2]
-    if command.lower() == 'del':
-        ds9.cursor_delete(group="group" + cu_number)
-    elif command.lower() == 'cent':
-        ds9.cursor_centroid(group="group" + cu_number)
-    elif command.lower() == 'info':
-        ds9.cursor_info(group="group" + cu_number)
-    sys.exit()
 
-if argc == 2:
-    cu_x = 540 + int(cu_number) * 50
-    cu_y = 600
-if argc >= 4:
-    cu_x = sys.argv[2]
-    cu_y = float(sys.argv[3])
-    if cu_x == 'slit':
-        slitpos_x = [475, 485, 495, 505, 515, 525, 535, 545, 555, 565]
-        cu_x = slitpos_x[int(cu_y) - 1]
-        cu_y = 915
+def move_cursor(ds9, cursor, args):
+    if args[0] != "slit":
+        cu_x = float(args[0])
+        cu_y = float(args[1])
     else:
-        cu_x = float(cu_x)
+        Y_SLIT_POS = [float(x) * 1.0 + random.random() * 5. - 2.5 for x in list(range(415, 516, 10))]
+        X_SLIT_POS = [(126.5 - 121.5) / (402.5 - 533.5) * (y - 533.5) + 121.5 for y in Y_SLIT_POS]
+        cu_x = X_SLIT_POS[int(args[1])]
+        cu_y = Y_SLIT_POS[int(args[1])]
 
-ds9.cursor_delete(group="group" + cu_number)
-ds9.cursor_disp(cu_x, cu_y, 15, group="group" + cu_number, color=color[int(cu_number)], label=cu_number)
+    ds9.cursor_delete(group="group" + cursor)
+    ds9.cursor_disp(cu_x, cu_y, 15,
+                    group="group" + cursor,
+                    label=cursor,
+                    color=COLORS[int(cursor)])
+
+
+@click.command()
+@click.argument("command", default="disp",
+                type=click.Choice(['disp', 'save', 'mv', 'slit', 'cent', 'info', 'del']),
+                nargs=1)
+@click.argument("cursor", default="0",  nargs=1)
+@click.argument("args", nargs=-1)
+def run(command, cursor, args):
+    """
+    This script controls the viewer cursors
+    """
+    ds9 = Ds9("Viewer")
+
+    try:
+        if command == "disp":
+            display_cursor(ds9, cursor)
+        elif command == "save":
+            ds9.region_save("ds9.reg")
+        elif command == "mv":
+            move_cursor(ds9, cursor, args)
+        elif command == "slit":
+            move_cursor(ds9, cursor, args, slit=True)
+        elif command == "cent":
+            ds9.cursor_centroid(group="group" + cursor)
+        elif command == "info":
+            ds9.cursor_info(group="group" + cursor)
+        elif command == "del":
+            ds9.cursor_delete(group="group" + cursor)
+    except ValueError:
+        LOG.warning("Bad Request:\n   Unable to run cursor command\n"
+                    "Example valid requests:\n"
+                    "   cu [COMMAND] [CURSOR] [ARGS]\n"
+                    "   cu disp all\n"
+                    "   cu mv 1 500 500\n"
+                    "   cu del 5\n"
+                    "   cu info 3")
+
+if __name__ == '__main__':
+    run()

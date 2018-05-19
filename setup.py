@@ -22,7 +22,8 @@ setuptools.setup(
     install_requires=[
         "numpy",
         "astropy==3.0.1",
-        "pyfits==3.5"
+        "pyfits==3.5",
+        "click"
     ]
 )
 
