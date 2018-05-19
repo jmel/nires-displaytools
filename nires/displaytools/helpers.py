@@ -1,11 +1,14 @@
-import pyfits as pf
+import astropy.io.fits as pf
 import glob
 import os
 import logging
 
-from nires.settings import DATAPATH
+from nires.settings import DATA_PATH
 
 LOG = logging.getLogger(__name__)
+
+if not DATA_PATH:
+    DATA_PATH = "."
 
 
 def read_image(fname):
@@ -46,11 +49,6 @@ def get_most_recent_file(path, prefix="s", suffix=".fits"):
     """
     
     files = sorted([f for f in os.listdir(path) if f.startswith(prefix[0]) and f.endswith(suffix) and len(f) < 22])
-    
-    # handle old version of filename
-    if len(files) == 0 and prefix[0] == "v":
-        files = sorted([f for f in os.listdir(path) if f.startswith("i") and f.endswith(suffix) and len(f) < 22])
-
     return files[-1]
 
 
@@ -61,13 +59,7 @@ def construct_filename(index_string: str, prefix: str):
     :param prefix:
     :return:
     """
-    index_string_len = len(index_string)
-    if index_string_len < 4:
-        name = ("0" + index_string for i in range(4 - index_string_len)) + ".fits"
-    else:
-        name = prefix + index_string + ".fits"
-
-    return name
+    return prefix + index_string.zfill(4) + ".fits"
 
 
 def name_resolve(index_string, prefix):
@@ -83,16 +75,17 @@ def name_resolve(index_string, prefix):
         try:
             return get_most_recent_file(".", prefix)
         except:
-            LOG.warning("Couldn't resolve name of latest picture")
+            LOG.warning("Bad Request:\n\tCould not resolve name of latest picture")
     # Check for length of input string to determine if you need to construct the name
 
     if is_number(index_string):
-        name = construct_filename(prefix, index_string)
+        name = construct_filename(index_string, prefix)
           
         try:
-            return glob.glob(DATAPATH + name)[0] #made the path absolute
-        except:
-            LOG.warning("Couldn't find picture number: %s", index_string)
+            return glob.glob(DATA_PATH + "/" + name)[0]  # made the path absolute
+        except IndexError as error:
+            LOG.warning("Bad Request:\n\tCould not find picture number: %s",
+                        index_string)
     return ""
 
 
@@ -104,5 +97,13 @@ def return_instrument(instrument_string):
         title = "Spectrograph"
         prefix = "s*"
     else:
-        LOG.warning("Please specify v for Viewer or s for Spectrograph")
+        LOG.warning("Bad Request:\n\tPlease specify 'v' for Viewer or 's' for Spectrograph")
     return title, prefix
+
+
+def construct_cursor(x, y, size=15, group="group1", label="1", color="white"):
+    font = "helvetica 16 normal"
+    regions = "regions command '{{box {} {} {} {} # " \
+              "color={} tag={} width=2 font=\"{}\" text=\"{}\"}}'".format(
+                x, y, size, size, color, group, font, label)
+    return regions

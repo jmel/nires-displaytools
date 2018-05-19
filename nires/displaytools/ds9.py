@@ -1,8 +1,13 @@
 import shlex
 import subprocess
 import time
-import logging as lg
-from nires.settings import XPAPATH
+import logging
+
+from nires.settings import CALIBRATION_PATH
+from nires.displaytools.helpers import construct_cursor
+
+LOG = logging.getLogger(__name__)
+DS9 = "/Applications/SAOImageDS9.app/Contents/MacOS/ds9"
 
 
 class Ds9:
@@ -14,16 +19,19 @@ class Ds9:
     title = None
 
     def __init__(self, title):
-        ''' ds9 construction init checks to see if a ds9 called title
+        """
+        ds9 construction init checks to see if a ds9 called title
         is currently running. If not, a new ds9 instance is created with
-        that title'''
+        that title
+        """
+
         self.title = title
-        cmd = shlex.split("{}/xpaset -p {} scale zscale".format(XPAPATH, title))  # set the path from the globals.py
+        cmd = shlex.split("xpaset -p {} scale zscale".format(title))  # set the path from the globals.py
 
         retcode = subprocess.call(cmd)
 
         if retcode == 1:
-            subprocess.Popen(["ds9", "-title", self.title])
+            subprocess.Popen([DS9, "-title", self.title])
             time.sleep(5)
             if self.title == "Spectrograph":
                 self.xpaset("width 1250")
@@ -39,100 +47,175 @@ class Ds9:
                 self.xpaset("zoom 0.5 0.5")               
 
     def xpaget(self, cmd):
-        '''xpaget is a convenience function around unix xpaget'''
-        cmd = shlex.split(XPAPATH +"xpaget %s %s" % (self.title, cmd))
+        """
+        xpaget is a convenience function around unix xpaget
+
+        :param cmd:
+        :return:
+        """
+        cmd = shlex.split("xpaget {} {}".format(self.title, cmd))
         retcode = subprocess.call(cmd)
 
     def xpapipe(self, cmd, pipein):
-        ''' xpapipe is a convenience wrapper around echo pipein | xpaset ...'''
-        
-        cmd = shlex.split(XPAPATH +"xpaset %s %s" % (self.title, cmd))
+        """
+        xpapipe is a convenience wrapper around echo pipein | xpaset
+
+        :param cmd:
+        :param pipein:
+        :return:
+        """
+        cmd = shlex.split("xpaset {} {}".format(self.title, cmd))
         p = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         p.stdin.write(pipein)
         p.stdin.flush()
-        # print p.communicate()
-
 
     def xpaset(self, cmd):
-        '''xpaget is a convenience function around unix xpaset'''
-                
-        xpacmd = XPAPATH +"xpaset -p %s %s" % (self.title, cmd)
-        lg.debug(xpacmd)
+        """
+        xpaget is a convenience function around unix xpaset
 
-        cmd = shlex.split(xpacmd)
+        :param cmd:
+        :return:
+        """
+        cmd = shlex.split("xpaset -p {} {}".format(self.title, cmd))
         retcode = subprocess.call(cmd)
-        lg.debug("retcode = %s" % retcode) 
 
+    def frame_num(self, frame):
+        """
+        sets the ds9 frame number to [frame]
 
-    def frameno(self, frame):
-        '''frameno sets the ds9 frame number to [frame]'''
-        self.xpaset("frame %i" %frame)
+        :param frame:
+        :return:
+        """
+        self.xpaset("frame {}".format(frame))
 
-    def open(self, fname, frame):
-        '''open opens a fits file [fname] into frame [frame]'''
-        ''' added commands that creates, resizes and enables options that are needed for that particular image. ds9setup not required'''
-        self.regSave()
-        self.frameno(frame)
-        self.xpaset("file %s" % fname)
-        self.regOpen()
+    def open(self, fname, frame=1):
+        """
+        opens a fits file [fname] into frame [frame]
 
-    def wavedisp(self):
-        # Changed path names to recognise the regions file'''
+        :param fname:
+        :param frame:
+        :return:
+        """
+        self.region_save()
+        self.frame_num(frame)
+        self.xpaset("file {}".format(fname))
+        self.region_open()
+
+    def wavelength_disp(self):
+        """
+        display wavelength regions
+
+        :return:
+        """
         self.xpaset("regions delete all")
-        self.xpaset("regions wavelength.reg") #set path from globals.py
+        self.xpaset("regions {}/wavelength.reg".format(CALIBRATION_PATH))
 
-    def emissiondisp(self):
+    def emission_disp(self):
+        """
+        display emission lines regions
+
+        :return:
+        """
         self.xpaset("regions delete all")
-        self.xpaset("regions " + globals.codepath + "calibrations/tspec_wavelength.reg")        
-        self.xpaset("regions " +globals.codepath +"calibrations/z_emission.reg")
+        self.xpaset("regions {}/z_emission.reg".format(CALIBRATION_PATH))
 
-    def zdisp(self):
+    def redshift_disp(self):
+        """
+        display redshifted regions
+
+        :return:
+        """
         self.xpaset("regions delete all")
-        self.xpaset("regions " + globals.codepath + "calibrations/tspec_wavelength.reg")
-        self.xpaset("regions " + globals.codepath + "calibrations/zregion.reg")
+        self.xpaset("regions {}/zregion.reg".format(CALIBRATION_PATH))
 
-    def cuDisp(self,x,y,size=15,group="foo1",label='1',color="white"):
-        font="helvetica 16 normal"
-        s="regions command '{box %d %d %d %d # color=%s tag=%s width=2 font=\"%s\" text=\"%s\"}'" \
-            % (x,y,size,size,color,group,font,label)
+    def cursor_disp(self, x, y, size=15, group="group1", label="1", color="white"):
+        """
+        display cursors
+
+        :param x:
+        :param y:
+        :param size:
+        :param group:
+        :param label:
+        :param color:
+        :return:
+        """
+        regions = construct_cursor(x, y, size, group, label, color)
+        self.xpaset(regions)
+
+    def cursor_label(self, x, y, group="group1", label="1", color="white"):
+        """
+        display cursor labels
+
+        :param x:
+        :param y:
+        :param group:
+        :param label:
+        :param color:
+        :return:
+        """
+        font = "helvetica 16 normal"
+        s = "regions command '{text {} {} # " \
+            "color={} tag={} width=2 font=\"{}\" text=\"{}\" }'".format(x,
+                                                                        y,
+                                                                        color,
+                                                                        group,
+                                                                        font,
+                                                                        label)
         self.xpaset(s)
 
-    def cuLabel(self,x,y,label="1",group="group1",color="white"):
-        font="helvetica 16 normal"
-        s="regions command '{text %d %d # color=%s tag=%s width=2 font=\"%s\" text=\"%s\" }'" % (x,y,color,group,font,label)
-        self.xpaset(s)
+    def cursor_delete(self, group):
+        """
+        delete cursors in group
 
-    def cuDel(self,group):
-        if group=='all':
-                        s="regions delete all" 
+        :param group:
+        :return:
+        """
+        if group == "all":
+            s = "regions delete all"
         else:
-            s="regions group %s delete" % (group)
+            s = "regions group {} delete".format(group)
         self.xpaset(s)
 
-#added a wavelength delete function
-    def wavDel(self):
+    def wavelength_delete(self):
+        """
+        delete all of the wavelength regions
+        :return:
+        """
         self.xpaset("regions delete all")
 
-    def cuCent(self,group):
-        s="regions group %s select" % (group)
-        self.xpaset(s)
-        s="regions centroid radius 5 iterations 5"
-        self.xpaset(s)
-        s="regions selectnone"
-        self.xpaset(s)
+    def cursor_centroid(self, group):
+        """
+        centroid the regions in a group
 
-    def cuInfo(self,group):
-        s="regions group %s select" % (group)
-        self.xpaset(s)
+        :param group:
+        :return:
+        """
+        self.xpaset("regions group {} select".format(group))
+        self.xpaset("regions centroid radius 5 iterations 5")
+        self.xpaset("regions selectnone")
+
+    def cursor_info(self, group):
+        """
+        get infor for a cursor group
+
+        :param group:
+        :return:
+        """
+        self.xpaset("regions group {} select".format(group))
         self.xpaset("regions getinfo")
 
-    def regSave(self):
-        self.xpaset("regions save " + self.title + ".reg")
+    def region_save(self):
+        """
+        save current regions
 
-    def regOpen(self):
-        self.xpaset("regions " + self.title + ".reg")
+        :return:
+        """
+        self.xpaset("regions save {}.reg".format(self.title))
 
-    def lindisp(self,dmin,dmax):
-        self.xpaset('scale linear')
-        s='scale limits %d %d' % (dmin,dmax)
-        self.xpaset(s)
+    def region_open(self):
+        self.xpaset("regions {}.reg".format(self.title))
+
+    def lindisp(self, dmin, dmax):
+        self.xpaset("scale linear")
+        self.xpaset("scale limits {} {}".format(dmin, dmax))
