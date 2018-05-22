@@ -169,7 +169,7 @@ class Ds9:
         :param group:
         :return:
         """
-        if group == "all":
+        if group == "groupall":
             s = "regions delete all"
         else:
             s = "regions group {} delete".format(group)
