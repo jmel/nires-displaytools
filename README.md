@@ -11,4 +11,4 @@ of use of the instrument when observing at Keck.
 6. cd <PATH_TO_NIRES_DISPLAYTOOLS>
 7. python setup.py install
 8. source scripts/aliases.sh
-9. cd to data directory and run nires displaytool commands
+9. cd to data directory and run nires displaytool commands (see docs for command lists)
