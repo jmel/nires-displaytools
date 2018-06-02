@@ -12,12 +12,12 @@ LOG = logging.getLogger(__name__)
 
 class Quicklook():
 
-    def __init__(self):
+    def __init__(self, data_dir="."):
         """
         setup the quicklook windows and display first frames
         """
 
-        self.data_dir = os.environment.get("DATA_DIR", ".")
+        self.data_dir = data_dir
 
         # setup viewer
         self.viewer = Ds9("Viewer")
