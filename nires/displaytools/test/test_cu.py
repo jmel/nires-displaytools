@@ -1,6 +1,4 @@
 import unittest
-from mock import patch
-from io import StringIO
 import nires.displaytools.cu as cu
 
 GROUP5 = "box(800,600,15,15,0) # color=orange width=2 font=\"helvetica 14 normal\" text={5} tag={group5}"

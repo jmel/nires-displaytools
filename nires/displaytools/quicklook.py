@@ -1,33 +1,25 @@
-import os
 from time import sleep
 import logging
 
 import nires.displaytools.helpers as helpers
-from nires.displaytools.ds9 import Ds9
 import nires.displaytools.pdiff as pdiff
 import nires.displaytools.dp as dp
+from nires.displaytools.bp import get_buffer
 
 LOG = logging.getLogger(__name__)
 
 
-class Quicklook():
-
+class QuickLook:
     def __init__(self, data_dir="."):
         """
-        setup the quicklook windows and display first frames
+        Setup the QuickLook windows and display first frames
         """
 
         self.data_dir = data_dir
 
-        # setup viewer
-        self.viewer = Ds9("Viewer")
-
-        # setup spectrograph
-        self.spectrograph = Ds9("Spectrograph")
-
         self.lp = {
-            "v": helpers.get_most_recent_file_num(self.data_dir, "v"),
-            "s": helpers.get_most_recent_file_num(self.data_dir, "s")
+            "v": helpers.get_most_recent_file(self.data_dir, "v"),
+            "s": helpers.get_most_recent_file(self.data_dir, "s")
         }
 
         self.update_display("v", self.lp["v"])
@@ -52,9 +44,10 @@ class Quicklook():
         :param inst:
         :return:
         """
-        lp = helpers.get_most_recent_file_num(self.data_dir, inst)
+        lp = helpers.get_most_recent_file(self.data_dir, inst)
         if lp > self.lp[inst]:
-            self.lp["inst"] = lp
+            self.lp[inst] = lp
+            self.update_display(inst, self.lp[inst])
 
     def update_display(self, inst, lp):
         """
@@ -64,29 +57,10 @@ class Quicklook():
         :param lp:
         :return:
         """
-        bp = self.get_buffer(inst)
-        if bp:
-            pdiff.run(inst, [lp, bp])
+        bp = get_buffer(self.data_dir, inst)
+        if bp and bp != "none":
+            temp_name = pdiff.construct_temp_name(inst)
+            pdiff.diff_image(lp, bp, temp_name=temp_name, imdir=self.data_dir)
+            dp.display_image(inst, fname=temp_name, data_dir=self.data_dir)
         else:
-            dp.run(inst, lp)
-
-    def get_buffer(self, inst):
-        data = self.read_metadata()
-        return data.get("buffer" + inst)
-
-    def read_metadata(self):
-        data = {}
-        try:
-            with open(self.data_dir + ".metadata", "r") as file:
-                for line in file:
-                    key, value = line.split(":")
-                    data[key] = value
-        except Exception as error:
-            LOG.warning("could not find metadata file %s", error)
-
-        return data
-
-
-
-
-
+            dp.display_image(inst, fname=lp, data_dir=self.data_dir)

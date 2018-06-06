@@ -7,8 +7,11 @@ export NIRES_PYTHON=/Users/jlmelbourne/Projects/nires-displaytools/nires/display
 alias dp=$NIRES_PYTHON/dp.py
 alias dpv="dp v"
 alias dps="dp s"
-alias dpcv="dp v c"
-alias dpcs="dp s c"
+
+# alias quicklook scripts
+alias bp=$NIRES_PYTHON/bp.py
+alias bpv="bp v"
+alias bps="bp s"
 
 # pdiff scripts
 alias pdiff=$NIRES_PYTHON/pdiff.py
