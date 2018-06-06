@@ -63,7 +63,7 @@ def run(inst, fnum, d):
             if fname:
                 set_buffer_image(inst, fname, data_dir=d)
             else:
-                LOG.warning("Buffer image for instrument: %s is %s", inst, get_buffer(d, inst))
+                raise ValueError
 
     except (UnboundLocalError, ValueError, IndexError):
         LOG.warning("Bad Request:\n   Unable to display picture\n"
@@ -71,7 +71,9 @@ def run(inst, fnum, d):
                     "   bp s 11\n"
                     "   bps 11\n"
                     "   bps lp\n"
-                    "   bpv 7")
+                    "   bpv 7\n"
+                    "   bpv show\n"
+                    "   bpv none\n")
 
 if __name__ == '__main__':
     run()
