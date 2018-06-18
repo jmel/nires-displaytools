@@ -20,7 +20,7 @@ setuptools.setup(
     description="Tools for better display of nires data",
     long_description=open("README.md").read(),
     install_requires=[
-        "numpy",
+        "numpy==1.14.3",
         "astropy==3.0.1",
         "pyfits==3.5",
         "click==6.7",
