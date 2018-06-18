@@ -23,8 +23,8 @@ setuptools.setup(
         "numpy",
         "astropy==3.0.1",
         "pyfits==3.5",
-        "click",
-        "mock"
+        "click==6.7",
+        "mock==2.0.0"
     ]
 )
 
