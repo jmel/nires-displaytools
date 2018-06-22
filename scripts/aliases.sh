@@ -1,12 +1,12 @@
 #!/bin/bash
 
-export NIRES_SCRIPTS=/Users/jlmelbourne/Projects/nires-displaytools/scripts
-export NIRES_PYTHON=/Users/jlmelbourne/Projects/nires-displaytools/nires/displaytools
+setenv NIRES_SCRIPTS /home/nireseng/projects/nires-displaytools/scripts
+setenv NIRES_PYTHON /home/nireseng/projects/nires-displaytools/nires/displaytools
 
 # ds9 display scripts
-alias dp=$NIRES_PYTHON/dp.py
-alias dpv="dp v"
-alias dps="dp s"
+alias dp $NIRES_PYTHON/dp.py
+alias dpv "dp v"
+alias dps "dp s"
 
 # alias quicklook scripts
 alias bp=$NIRES_PYTHON/bp.py
