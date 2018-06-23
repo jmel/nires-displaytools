@@ -64,3 +64,8 @@ class QuickLook:
             dp.display_image(inst, fname=temp_name, data_dir=self.data_dir)
         else:
             dp.display_image(inst, fname=lp, data_dir=self.data_dir)
+
+
+def __main__():
+    ql = QuickLook()
+    ql.run()
