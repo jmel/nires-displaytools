@@ -9,7 +9,7 @@ alias dpv="dp v"
 alias dps="dp s"
 
 # alias quicklook scripts
-alias ql=$NIRES_PYTHON/quicklook.py
+alias ql=$NIRES_PYTHON/quicklook.py &
 alias bp=$NIRES_PYTHON/bp.py
 alias bpv="bp v"
 alias bps="bp s"

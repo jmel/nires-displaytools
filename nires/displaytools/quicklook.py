@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# run quicklook
+
 from time import sleep
 import logging
 
@@ -65,7 +68,6 @@ class QuickLook:
         else:
             dp.display_image(inst, fname=lp, data_dir=self.data_dir)
 
-
-def __main__():
+if __name__ == '__main__':
     ql = QuickLook()
     ql.run()
