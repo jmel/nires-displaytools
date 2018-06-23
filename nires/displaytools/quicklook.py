@@ -3,6 +3,7 @@
 
 from time import sleep
 import logging
+import os
 
 import nires.displaytools.helpers as helpers
 import nires.displaytools.pdiff as pdiff
@@ -63,11 +64,12 @@ class QuickLook:
         bp = get_buffer(self.data_dir, inst)
         if bp and bp != "none":
             temp_name = pdiff.construct_temp_name(inst)
-            pdiff.diff_image(lp, bp, temp_name=temp_name, imdir=self.data_dir)
+            pdiff.diff_image(lp, bp, temp_name=temp_name, data_dir=self.data_dir)
             dp.display_image(inst, fname=temp_name, data_dir=self.data_dir)
         else:
             dp.display_image(inst, fname=lp, data_dir=self.data_dir)
 
 if __name__ == '__main__':
-    ql = QuickLook()
+    data_dir = os.environ.get("DATADIR", ".")
+    ql = QuickLook(data_dir=data_dir)
     ql.run()
