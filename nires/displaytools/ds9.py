@@ -3,11 +3,10 @@ import subprocess
 import time
 import logging
 
-from nires.settings import CALIBRATION_PATH
+from nires.settings import CALIBRATION_PATH, DS9
 from nires.displaytools.helpers import construct_cursor
 
 LOG = logging.getLogger(__name__)
-DS9 = "/usr/local/bin/ds9"
 
 
 class Ds9:
