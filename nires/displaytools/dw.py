@@ -17,12 +17,9 @@ def shift_region(redshift):
         with open("{}/{}".format(CALIBRATION_PATH, WAVELENGTH_REG), "r") as infile:
             for line in infile:
                 if "# text" in line:
-                    LOG.warning("found text %s", line)
                     nums = re.findall(r"[\d\.]+", line)
-                    LOG.warning("extracted nums %s", nums)
                     out_string = "# text({},{}) text={{{:4.2f}}}\n".format(
                         nums[0], nums[1], float(nums[2]) / (1. + redshift))
-                    LOG.warning("Out text %s", out_string)
                     outfile.write(out_string)
                 else:
                     outfile.write(line)
