@@ -3,7 +3,7 @@
 
 from time import sleep
 import logging
-import os
+import click
 
 import nires.displaytools.helpers as helpers
 import nires.displaytools.pdiff as pdiff
@@ -69,7 +69,15 @@ class QuickLook:
         else:
             dp.display_image(inst, fname=lp, data_dir=self.data_dir)
 
+
+@click.command()
+@click.option("-autodisplay", nargs=1)
+@click.option('--d', default=".")
+def run(autodisplay, d):
+    ql = QuickLook(data_dir=d)
+    if autodisplay:
+        ql.run()
+
 if __name__ == '__main__':
-    data_dir = os.environ.get("DATADIR", ".")
-    ql = QuickLook(data_dir=data_dir)
-    ql.run()
+    run()
+
