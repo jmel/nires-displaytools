@@ -18,7 +18,7 @@ def shift_region(redshift):
             for line in infile:
                 if "# text" in line:
                     nums = re.findall(r"[\d\.]+", line)
-                    out_string = "# text({},{}) text={{{:4.2f}}}\n".format(
+                    out_string = "# text({},{}) text={{{:5.3f}}}\n".format(
                         nums[0], nums[1], float(nums[2]) / (1. + redshift))
                     outfile.write(out_string)
                 else:
