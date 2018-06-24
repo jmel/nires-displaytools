@@ -20,7 +20,7 @@ def shift_region(redshift):
                     LOG.warning("found text %s", line)
                     nums = re.findall(r"[\d\.]+", line)
                     LOG.warning("extracted nums %s", nums)
-                    out_string = "# text({},{}) text={{{:5.3f}}}\n".format(
+                    out_string = "# text({},{}) text={{{:4.2f}}}\n".format(
                         nums[0], nums[1], float(nums[2]) / (1. + redshift))
                     LOG.warning("Out text %s", out_string)
                     outfile.write(out_string)
