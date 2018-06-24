@@ -6,6 +6,7 @@ import logging
 import random
 
 from nires.displaytools.ds9 import Ds9
+from nires.settings import TMPDIR
 
 COLORS = ["white",
           "yellow",
@@ -116,7 +117,7 @@ def run(command, cursor, args, d):
         if command == "disp":
             display_cursor(ds9, cursor)
         elif command == "save":
-            ds9.region_save(data_dir=d)
+            ds9.region_save(data_dir=TMPDIR)
         elif command == "mv":
             move_cursor(ds9, cursor, args)
         elif command == "mt":
@@ -127,7 +128,7 @@ def run(command, cursor, args, d):
             ds9.cursor_info(group="group" + cursor)
         elif command == "del":
             ds9.cursor_delete(group="group" + cursor)
-        ds9.region_save(data_dir=d)
+        ds9.region_save(data_dir=TMPDIR)
     except (ValueError, IndexError, TypeError):
         LOG.warning("Bad Request:\n   Unable to run cursor command\n"
                     "Example valid requests:\n"

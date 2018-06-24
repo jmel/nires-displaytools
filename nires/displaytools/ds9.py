@@ -7,7 +7,7 @@ from nires.settings import CALIBRATION_PATH
 from nires.displaytools.helpers import construct_cursor
 
 LOG = logging.getLogger(__name__)
-DS9 = "/Applications/SAOImageDS9.app/Contents/MacOS/ds9"
+DS9 = "/usr/local/bin/ds9"
 
 
 class Ds9:
