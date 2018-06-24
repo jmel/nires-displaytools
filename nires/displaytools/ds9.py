@@ -3,11 +3,10 @@ import subprocess
 import time
 import logging
 
-from nires.settings import CALIBRATION_PATH
+from nires.settings import CALIBRATION_PATH, DS9, TMPDIR
 from nires.displaytools.helpers import construct_cursor
 
 LOG = logging.getLogger(__name__)
-DS9 = "/usr/local/bin/ds9"
 
 
 class Ds9:
@@ -115,7 +114,7 @@ class Ds9:
         :return:
         """
         self.xpaset("regions delete all")
-        self.xpaset("regions {}/z_emission.reg".format(CALIBRATION_PATH))
+        self.xpaset("regions {}/z_emission.reg".format(TMPDIR))
 
     def redshift_disp(self):
         """
@@ -124,7 +123,7 @@ class Ds9:
         :return:
         """
         self.xpaset("regions delete all")
-        self.xpaset("regions {}/zregion.reg".format(CALIBRATION_PATH))
+        self.xpaset("regions {}/z_wavelength.reg".format(TMPDIR))
 
     def cursor_disp(self, x, y, size=15, group="group1", label="1", color="white"):
         """
