@@ -4,7 +4,6 @@ setenv NIRES_SCRIPTS /home/nireseng/projects/nires-displaytools/scripts
 setenv NIRES_PYTHON /home/nireseng/projects/nires-displaytools/nires/displaytools
 setenv TEMPDIR /tmp/nires
 setenv DATADIR /s/sdata1500/nires4/2018jun24
-export TMPDIR=/tmp/nires
 mkdir $TMPDIR
 
 # ds9 display scripts
