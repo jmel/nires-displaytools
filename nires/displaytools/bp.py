@@ -14,6 +14,7 @@ METADATA_FILE = ".metadata"
 def get_buffer(data_dir, inst):
     """
     get the buffer image if it exists
+    :param data_dir:
     :param inst:
     :return:
     """

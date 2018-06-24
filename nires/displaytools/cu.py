@@ -105,7 +105,8 @@ def move_telescope(cursor, args):
                 nargs=1)
 @click.argument("cursor", default="0",  nargs=1)
 @click.argument("args", nargs=-1)
-def run(command, cursor, args):
+@click.option('--d', default=".")
+def run(command, cursor, args, d):
     """
     This script controls the viewer cursors
     """
@@ -115,7 +116,7 @@ def run(command, cursor, args):
         if command == "disp":
             display_cursor(ds9, cursor)
         elif command == "save":
-            ds9.region_save()
+            ds9.region_save(data_dir=d)
         elif command == "mv":
             move_cursor(ds9, cursor, args)
         elif command == "mt":
@@ -126,7 +127,7 @@ def run(command, cursor, args):
             ds9.cursor_info(group="group" + cursor)
         elif command == "del":
             ds9.cursor_delete(group="group" + cursor)
-        ds9.region_save()
+        ds9.region_save(data_dir=d)
     except (ValueError, IndexError, TypeError):
         LOG.warning("Bad Request:\n   Unable to run cursor command\n"
                     "Example valid requests:\n"
