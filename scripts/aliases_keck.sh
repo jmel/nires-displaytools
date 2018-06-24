@@ -4,9 +4,9 @@ setenv NIRES_SCRIPTS /home/nireseng/projects/nires-displaytools/scripts
 setenv NIRES_PYTHON /home/nireseng/projects/nires-displaytools/nires/displaytools
 setenv TMPDIR /tmp/nires
 setenv DATADIR /s/sdata1500/nires4/2018jun24
-if [ ! -d $TMPDIR ];then
-    mkdir $TMPDIR
-fi
+
+mkdir -p $TMPDIR
+
 # ds9 display scripts
 alias dp "$NIRES_PYTHON/dp.py --d $DATADIR"
 alias dpv "dp v"
