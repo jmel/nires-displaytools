@@ -5,7 +5,7 @@ setenv NIRES_PYTHON /home/nireseng/projects/nires-displaytools/nires/displaytool
 setenv TMPDIR /tmp/nires
 setenv DATADIR /s/sdata1500/nires4/2018jun24
 setenv DS9_PATH /usr/local/bin/ds9
-setenv CALIBRATION_PATH /Users/jlmelbourne/Projects/nires-displaytools/calibrations
+setenv CALIBRATION_PATH /home/nireseng/projects/nires-displaytools/calibrations
 
 mkdir -p $TMPDIR
 
