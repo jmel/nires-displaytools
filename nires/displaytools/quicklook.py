@@ -1,5 +1,9 @@
+#!/usr/bin/env python
+# run quicklook
+
 from time import sleep
 import logging
+import click
 
 import nires.displaytools.helpers as helpers
 import nires.displaytools.pdiff as pdiff
@@ -60,7 +64,20 @@ class QuickLook:
         bp = get_buffer(self.data_dir, inst)
         if bp and bp != "none":
             temp_name = pdiff.construct_temp_name(inst)
-            pdiff.diff_image(lp, bp, temp_name=temp_name, imdir=self.data_dir)
+            pdiff.diff_image(lp, bp, temp_name=temp_name, data_dir=self.data_dir)
             dp.display_image(inst, fname=temp_name, data_dir=self.data_dir)
         else:
             dp.display_image(inst, fname=lp, data_dir=self.data_dir)
+
+
+@click.command()
+@click.option("-autodisplay", nargs=1)
+@click.option('--d', default=".")
+def run(autodisplay, d):
+    ql = QuickLook(data_dir=d)
+    if autodisplay:
+        ql.run()
+
+if __name__ == '__main__':
+    run()
+

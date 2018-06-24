@@ -203,16 +203,16 @@ class Ds9:
         self.xpaset("regions group {} select".format(group))
         self.xpaset("regions getinfo")
 
-    def region_save(self):
+    def region_save(self, data_dir="."):
         """
         save current regions
-
+        :param data_dir:
         :return:
         """
-        self.xpaset("regions save {}.reg".format(self.title))
+        self.xpaset("regions save {}/{}.reg".format(data_dir, self.title))
 
-    def region_open(self):
-        self.xpaset("regions {}.reg".format(self.title))
+    def region_open(self, data_dir="."):
+        self.xpaset("regions {}/{}.reg".format(data_dir, self.title))
 
     def lindisp(self, dmin, dmax):
         self.xpaset("scale linear")

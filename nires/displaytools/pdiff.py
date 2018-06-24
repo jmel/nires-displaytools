@@ -11,9 +11,9 @@ from nires.displaytools.dp import display_image
 LOG = logging.getLogger(__name__)
 
 
-def diff_image(imname1, imname2, temp_name="ds9_diff.fits", imdir="."):
-    im1 = helpers.read_image("{}/{}".format(imdir, imname1))
-    im2 = helpers.read_image("{}/{}".format(imdir, imname2))
+def diff_image(imname1, imname2, temp_name="ds9_diff.fits", data_dir="."):
+    im1 = helpers.read_image("{}/{}".format(data_dir, imname1))
+    im2 = helpers.read_image("{}/{}".format(data_dir, imname2))
 
     # subtract the images
     hdu = pf.PrimaryHDU(im1 - im2)
@@ -22,7 +22,7 @@ def diff_image(imname1, imname2, temp_name="ds9_diff.fits", imdir="."):
     # temp save
     with warnings.catch_warnings():
         warnings.simplefilter('ignore')
-        hdulist.writeto("{}/{}".format(imdir, temp_name), clobber=True)
+        hdulist.writeto("{}/{}".format(data_dir, temp_name), clobber=True)
 
 
 def construct_temp_name(inst):
@@ -32,17 +32,18 @@ def construct_temp_name(inst):
 @click.command()
 @click.argument("inst", type=click.Choice(["v", "s"]), nargs=1)
 @click.argument("fnums", nargs=-1)
-def run(inst, fnums):
+@click.option('--d', default=".")
+def run(inst, fnums, d):
     """
     script to display the difference of two images
     """
     try:
-        imname1 = helpers.name_resolve(fnums[0], inst)
-        imname2 = helpers.name_resolve(fnums[1], inst)
+        imname1 = helpers.name_resolve(fnums[0], inst, data_dir=d)
+        imname2 = helpers.name_resolve(fnums[1], inst, data_dir=d)
 
         temp_name = construct_temp_name(inst)
-        diff_image(imname1, imname2, temp_name=temp_name)
-        display_image(inst, temp_name)
+        diff_image(imname1, imname2, temp_name=temp_name, data_dir=d)
+        display_image(inst, temp_name, data_dir=d)
 
     except (TypeError, ValueError, IndexError):
         LOG.warning("Bad Request:\n   Unable to display picture\n"

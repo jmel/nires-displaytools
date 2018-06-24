@@ -20,10 +20,11 @@ def run(inst, low, high):
     script to change the display scale parameters
     """
     try:
-        title, prefix = return_instrument(inst)
+        title = return_instrument(inst)
         ds9 = Ds9(title)
         ds9.lindisp(float(low), float(high))
-    except (UnboundLocalError, ValueError):
+    except (UnboundLocalError, ValueError) as error:
+        LOG.warning("ERROR: %s", error)
         LOG.warning("Bad Request:\n   Unable to change display\n"
                     "Example valid requests:\n"
                     "   lindisp s 0 100\n"
