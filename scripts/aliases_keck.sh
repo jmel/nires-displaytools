@@ -35,3 +35,6 @@ alias cu "$NIRES_PYTHON/cu.py --d $TMPDIR"
 alias cucent $NIRES_SCRIPTS/cucent.sh
 alias cudel $NIRES_SCRIPTS/cudel.sh
 alias cuslit $NIRES_SCRIPTS/cuslit.sh
+
+# wavelength scripts
+alias dw $NIRES_PYTHON/dw.py
