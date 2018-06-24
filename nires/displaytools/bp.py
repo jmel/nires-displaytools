@@ -4,6 +4,7 @@
 import logging
 import click
 import configparser
+from nires.settings import TMPDIR
 
 import nires.displaytools.helpers as helpers
 
@@ -11,38 +12,38 @@ LOG = logging.getLogger(__name__)
 METADATA_FILE = ".metadata"
 
 
-def get_buffer(data_dir, inst):
+def get_buffer(tmp_dir, inst):
     """
     get the buffer image if it exists
-    :param data_dir:
+    :param tmp_dir:
     :param inst:
     :return:
     """
     config = configparser.ConfigParser()
-    config.read("{}/{}".format(data_dir, METADATA_FILE))
+    config.read("{}/{}".format(tmp_dir, METADATA_FILE))
     try:
         return config["buffer"][inst]
     except (TypeError, KeyError):
         return None
 
 
-def set_buffer_image(inst, value, data_dir="."):
+def set_buffer_image(inst, value, tmp_dir=TMPDIR):
     """
     set the buffer image for the instrument quicklook
     :param inst:
     :param value:
-    :param data_dir:
+    :param tmp_dir:
     :return:
     """
     config = configparser.ConfigParser()
-    config.read("{}/{}".format(data_dir, METADATA_FILE))
+    config.read("{}/{}".format(tmp_dir, METADATA_FILE))
     try:
         config["buffer"][inst] = value
     except (TypeError, KeyError):
         config["buffer"] = {}
         config["buffer"][inst] = value
 
-    with open("{}/{}".format(data_dir, METADATA_FILE), "w") as configfile:
+    with open("{}/{}".format(tmp_dir, METADATA_FILE), "w") as configfile:
         config.write(configfile)
 
 
@@ -58,11 +59,11 @@ def run(inst, fnum, d):
         if fnum == "show":
             LOG.warning("Buffer image for instrument: %s is %s", inst, get_buffer(d, inst))
         elif fnum == "none":
-            set_buffer_image(inst, "none", data_dir=d)
+            set_buffer_image(inst, "none")
         else:
             fname = helpers.name_resolve(fnum, inst, data_dir=d)
             if fname:
-                set_buffer_image(inst, fname, data_dir=d)
+                set_buffer_image(inst, fname)
             else:
                 raise ValueError
 

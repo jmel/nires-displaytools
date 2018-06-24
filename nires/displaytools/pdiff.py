@@ -8,6 +8,8 @@ import click
 
 import nires.displaytools.helpers as helpers
 from nires.displaytools.dp import display_image
+from nires.settings import TMPDIR
+
 LOG = logging.getLogger(__name__)
 
 
@@ -22,7 +24,7 @@ def diff_image(imname1, imname2, temp_name="ds9_diff.fits", data_dir="."):
     # temp save
     with warnings.catch_warnings():
         warnings.simplefilter('ignore')
-        hdulist.writeto("{}/{}".format(data_dir, temp_name), clobber=True)
+        hdulist.writeto("{}/{}".format(TMPDIR, temp_name), clobber=True)
 
 
 def construct_temp_name(inst):
@@ -43,7 +45,7 @@ def run(inst, fnums, d):
 
         temp_name = construct_temp_name(inst)
         diff_image(imname1, imname2, temp_name=temp_name, data_dir=d)
-        display_image(inst, temp_name, data_dir=d)
+        display_image(inst, temp_name, data_dir=TMPDIR)
 
     except (TypeError, ValueError, IndexError):
         LOG.warning("Bad Request:\n   Unable to display picture\n"

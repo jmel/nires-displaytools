@@ -6,6 +6,7 @@ import click
 
 import nires.displaytools.helpers as helpers
 from nires.displaytools.ds9 import Ds9
+from nires.settings import TMPDIR
 
 LOG = logging.getLogger(__name__)
 
@@ -20,9 +21,9 @@ def display_image(inst, fname, data_dir="."):
     """
     title = helpers.return_instrument(inst)
     ds9 = Ds9(title)
-    ds9.region_save()
+    ds9.region_save(data_dir=TMPDIR)
     ds9.open("{}/{}".format(data_dir, fname), 1)
-    ds9.region_open()
+    ds9.region_open(data_dir=TMPDIR)
 
 
 @click.command()

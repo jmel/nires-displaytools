@@ -2,6 +2,7 @@
 
 setenv NIRES_SCRIPTS /home/nireseng/projects/nires-displaytools/scripts
 setenv NIRES_PYTHON /home/nireseng/projects/nires-displaytools/nires/displaytools
+setenv TEMPDIR /tmp/nires
 
 # ds9 display scripts
 alias dp "$NIRES_PYTHON/dp.py --d $DATADIR"
@@ -24,7 +25,7 @@ alias lindispv "lindisp v"
 alias lindisps "lindisp s"
 
 # ds9 cursor scrips
-alias cu "$NIRES_PYTHON/cu.py --d $DATADIR"
+alias cu "$NIRES_PYTHON/cu.py --d $TEMPDIR"
 alias cucent $NIRES_SCRIPTS/cucent.sh
 alias cudel $NIRES_SCRIPTS/cudel.sh
 alias cuslit $NIRES_SCRIPTS/cuslit.sh
