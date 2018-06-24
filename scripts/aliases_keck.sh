@@ -13,6 +13,7 @@ alias dpv "dp v"
 alias dps "dp s"
 
 # alias quicklook scripts
+alias ql "$NIRES_PYTHON/quicklook.py --d $DATADIR"
 alias bp "$NIRES_PYTHON/bp.py --d $DATADIR"
 alias bpv "bp v"
 alias bps "bp s"
