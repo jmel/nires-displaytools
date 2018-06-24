@@ -103,3 +103,5 @@ ENV/
 # docker
 .env.dev
 *.yml
+
+scripts/aliases.sh
