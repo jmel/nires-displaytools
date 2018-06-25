@@ -20,6 +20,9 @@ alias bp "$NIRES_PYTHON/bp.py --d $DATADIR"
 alias bpv "bp v"
 alias bps "bp s"
 
+bpv none
+bps none
+
 # pdiff scripts
 alias pdiff "$NIRES_PYTHON/pdiff.py --d $DATADIR"
 alias pdiffv "pdiff v"
