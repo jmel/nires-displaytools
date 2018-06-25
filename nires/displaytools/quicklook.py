@@ -83,14 +83,14 @@ class QuickLook:
 def run(option, d):
 
     ql = QuickLook(data_dir=d)
+    ql.update_display("v", ql.lp["v"])
+    ql.update_display("s", ql.lp["s"])
     if option == "manual":
         os.system("touch {}/{}".format(TMPDIR, NIRES_AUTODISPLAY_STOP))
         os.system("rm {}/{}".format(TMPDIR, NIRES_AUTODISPLAY_START))
     elif option == "auto":
         os.system("touch {}/{}".format(TMPDIR, NIRES_AUTODISPLAY_START))
         os.system("rm {}/{}".format(TMPDIR, NIRES_AUTODISPLAY_STOP))
-        ql.update_display("v", ql.lp["v"])
-        ql.update_display("s", ql.lp["s"])
         ql.run()
 
 if __name__ == '__main__':
