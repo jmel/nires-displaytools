@@ -3,7 +3,7 @@
 setenv NIRES_SCRIPTS /home/nireseng/projects/nires-displaytools/scripts
 setenv NIRES_PYTHON /home/nireseng/projects/nires-displaytools/nires/displaytools
 setenv TMPDIR /tmp/nires
-setenv DATADIR /s/sdata1500/nires4/2018jun24
+setenv DATADIR "show -s nsds -terse outdir"
 setenv DS9_PATH /usr/local/bin/ds9
 setenv CALIBRATION_PATH /home/nireseng/projects/nires-displaytools/calibrations
 

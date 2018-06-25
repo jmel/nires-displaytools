@@ -485,8 +485,33 @@ td
  <col class=xl69 width=411 style='mso-width-source:userset;mso-width-alt:17536;
  width:411pt'>
  <tr height=25 style='height:25.0pt'>
-  <td height=25 class=xl67 width=194 style='height:25.0pt;width:194pt'>NIRES
+  <td height=25 class=xl67 width=194 style='height:25.0pt;width:194pt'>NIRES Display Tools
   Command List</td>
+  </tr>
+ <tr height=25 style='height:25.0pt'>
+  <td width=100>
+   <br>
+  <p>
+   The NIRES Display tools are a sweet of python scripts that interact with ds9 to display and analyze NIRES images and <br>
+   spectra. To access the tools, you need to launch a python virtualenv and run a startup script.
+  </p>
+  <p>
+   The python code lives in: <br>
+   /home/nireseng/projects/nires-displaytools
+  </p>
+  <p>
+   To activate the virtual environment: <br>
+   > source ~/virtualenvs/displaytools/bin/activate.csh
+  </p>
+   <p>
+  To setup the environment on startup: <br>
+  > source /home/nireseng/projects/nires-displaytools/scripts/aliases.sh
+   </p>
+   <p>
+    You currently need to do these tasks in any xterm that you plan to control the display tools with.<br>
+    Once the preceding steps are completed you can then issue the following command line scripts.
+   </p>
+  </td>
   <td class=xl65 width=194 style='width:194pt'></td>
   <td class=xl69 width=411 style='width:411pt'></td>
  </tr>
@@ -515,7 +540,116 @@ td
   <td class=xl65></td>
   <td class=xl69 width=411 style='width:411pt'></td>
  </tr>
- <tr class=xl66 height=25 style='height:25.0pt'>
+ <tr class=xl67 height=25 style='height:25.0pt'>
+  <td height=25 class=xl67 style='height:25.0pt'>Display Images</td>
+  <td class=xl67></td>
+  <td class=xl68 width=411 style='width:411pt'></td>
+ </tr>
+ <tr class=xl74 height=25 style='height:25.0pt'>
+  <td height=25 class=xl74 style='height:25.0pt;font-size:20.0pt;color:white;
+  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
+  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:none;border-left:.5pt solid #C0504D;background:#C0504D;
+  mso-pattern:#C0504D none'>Action</td>
+  <td class=xl74 style='font-size:20.0pt;color:white;font-weight:700;
+  text-decoration:none;text-underline-style:none;text-line-through:none;
+  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:none;border-left:none;background:#C0504D;mso-pattern:#C0504D none'>Command</td>
+  <td class=xl75 width=411 style='width:411pt;font-size:20.0pt;color:white;
+  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
+  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
+  border-bottom:none;border-left:none;background:#C0504D;mso-pattern:#C0504D none'>Description</td>
+ </tr>
+ <tr height=20 style='height:20.0pt'>
+  <td height=20 class=xl86 style='height:20.0pt;font-size:16.0pt;color:black;
+  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
+  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:none;border-left:.5pt solid #C0504D;background:gray;mso-pattern:
+  black none'>Display Linear Stretch</td>
+  <td class=xl86 style='font-size:16.0pt;color:black;font-weight:400;
+  text-decoration:none;text-underline-style:none;text-line-through:none;
+  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>lindispv
+  <font class="font6">n</font><font class="font5"> </font><font class="font6">m</font></td>
+  <td width=411 style='width:411pt' align=left valign=top><span
+  style='position:absolute;z-index:1;margin-left:7px;margin-top:11px;
+  width:17px;height:76px'><img width=17 height=76
+  src="Commands_files/image001.png"></span>
+  <table cellpadding=0 cellspacing=0>
+   <tr>
+    <td height=20 class=xl87 width=411 style='height:20.0pt;width:411pt;
+    font-size:16.0pt;color:black;font-weight:400;text-decoration:none;
+    text-underline-style:none;text-line-through:none;font-family:Calibri;
+    border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;border-bottom:
+    none;border-left:none;background:gray;mso-pattern:black none'>Apply a
+    linear stretch from <font class="font6">n</font><font class="font5">
+    (integer) to </font><font class="font6">m</font><font class="font5"><span
+    style="mso-spacerun:yes">&nbsp;</span>(integer)</font></td>
+   </tr>
+  </table>
+  </span></td>
+ </tr>
+ <tr height=20 style='height:20.0pt'>
+  <td height=20 class=xl86 style='height:20.0pt;font-size:16.0pt;color:black;
+  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
+  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:none;border-left:.5pt solid #C0504D;background:gray;mso-pattern:
+  black none'>Display picture</td>
+  <td class=xl86 style='font-size:16.0pt;color:black;font-weight:400;
+  text-decoration:none;text-underline-style:none;text-line-through:none;
+  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>dpv
+  <font class="font6">n</font></td>
+  <td class=xl87 width=411 style='width:411pt;font-size:16.0pt;color:black;
+  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
+  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>Display
+  a field viewer image number <font class="font6">n</font><font class="font5"><span
+  style="mso-spacerun:yes">&nbsp;</span>(integer)</font></td>
+ </tr>
+ <tr height=20 style='height:20.0pt'>
+  <td height=20 class=xl86 style='height:20.0pt;font-size:16.0pt;color:black;
+  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
+  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:none;border-left:.5pt solid #C0504D;background:gray;mso-pattern:
+  black none'>Display last picture</td>
+  <td class=xl86 style='font-size:16.0pt;color:black;font-weight:400;
+  text-decoration:none;text-underline-style:none;text-line-through:none;
+  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>dpv lp<span
+  style="mso-spacerun:yes">&nbsp;</span></td>
+  <td class=xl87 width=411 style='width:411pt;font-size:16.0pt;color:black;
+  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
+  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>Display
+  last picture taken<span style="mso-spacerun:yes">&nbsp;</span></td>
+ </tr>
+ <tr class=xl90 height=40 style='height:40.0pt'>
+  <td height=40 class=xl72 style='height:40.0pt;font-size:16.0pt;color:black;
+  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
+  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:.5pt solid #C0504D;border-left:.5pt solid #C0504D;background:
+  gray;mso-pattern:black none'>Subtract pictures and display</td>
+  <td class=xl72 style='font-size:16.0pt;color:black;font-weight:400;
+  text-decoration:none;text-underline-style:none;text-line-through:none;
+  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:.5pt solid #C0504D;border-left:none;background:gray;mso-pattern:
+  black none'>pdiffv <font class="font6">n m</font></td>
+  <td class=xl73 width=411 style='width:411pt;font-size:16.0pt;color:black;
+  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
+  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
+  border-bottom:.5pt solid #C0504D;border-left:none;background:gray;mso-pattern:
+  black none'>Subtract image # <font class="font6">m </font><font class="font5">(integer)
+  from  image # </font><font class="font6">n</font><font class="font5"><span
+  style="mso-spacerun:yes">&nbsp;</span>(integer) and display</font></td>
+ </tr>
+ <tr height=20 style='height:20.0pt'>
+  <td height=20 class=xl65 style='height:20.0pt'></td>
+  <td class=xl65></td>
+  <td class=xl69 width=411 style='width:411pt'></td>
+ </tr>
+ </tr>
+  <tr class=xl66 height=25 style='height:25.0pt'>
   <td height=25 class=xl67 style='height:25.0pt'>Cursors</td>
   <td class=xl66></td>
   <td class=xl76 width=411 style='width:411pt'></td>
@@ -683,234 +817,6 @@ td
   <td class=xl65></td>
   <td class=xl69 width=411 style='width:411pt'></td>
  </tr>
- <tr class=xl67 height=25 style='height:25.0pt'>
-  <td height=25 class=xl67 style='height:25.0pt'>Display Images</td>
-  <td class=xl67></td>
-  <td class=xl68 width=411 style='width:411pt'></td>
- </tr>
- <tr class=xl74 height=25 style='height:25.0pt'>
-  <td height=25 class=xl74 style='height:25.0pt;font-size:20.0pt;color:white;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:none;border-left:.5pt solid #C0504D;background:#C0504D;
-  mso-pattern:#C0504D none'>Action</td>
-  <td class=xl74 style='font-size:20.0pt;color:white;font-weight:700;
-  text-decoration:none;text-underline-style:none;text-line-through:none;
-  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:none;border-left:none;background:#C0504D;mso-pattern:#C0504D none'>Command</td>
-  <td class=xl75 width=411 style='width:411pt;font-size:20.0pt;color:white;
-  font-weight:700;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
-  border-bottom:none;border-left:none;background:#C0504D;mso-pattern:#C0504D none'>Description</td>
- </tr>
- <tr height=20 style='height:20.0pt'>
-  <td height=20 class=xl86 style='height:20.0pt;font-size:16.0pt;color:black;
-  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:none;border-left:.5pt solid #C0504D;background:gray;mso-pattern:
-  black none'>Display Linear Stretch</td>
-  <td class=xl86 style='font-size:16.0pt;color:black;font-weight:400;
-  text-decoration:none;text-underline-style:none;text-line-through:none;
-  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>lindispv
-  <font class="font6">n</font><font class="font5"> </font><font class="font6">m</font></td>
-  <td width=411 style='width:411pt' align=left valign=top><span
-  style='position:absolute;z-index:1;margin-left:7px;margin-top:11px;
-  width:17px;height:76px'><img width=17 height=76
-  src="Commands_files/image001.png"></span>
-  <table cellpadding=0 cellspacing=0>
-   <tr>
-    <td height=20 class=xl87 width=411 style='height:20.0pt;width:411pt;
-    font-size:16.0pt;color:black;font-weight:400;text-decoration:none;
-    text-underline-style:none;text-line-through:none;font-family:Calibri;
-    border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;border-bottom:
-    none;border-left:none;background:gray;mso-pattern:black none'>Apply a
-    linear stretch from <font class="font6">n</font><font class="font5">
-    (integer) to </font><font class="font6">m</font><font class="font5"><span
-    style="mso-spacerun:yes">&nbsp;</span>(integer)</font></td>
-   </tr>
-  </table>
-  </span></td>
- </tr>
- <tr height=20 style='height:20.0pt'>
-  <td height=20 class=xl86 style='height:20.0pt;font-size:16.0pt;color:black;
-  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:none;border-left:.5pt solid #C0504D;background:gray;mso-pattern:
-  black none'>Display picture</td>
-  <td class=xl86 style='font-size:16.0pt;color:black;font-weight:400;
-  text-decoration:none;text-underline-style:none;text-line-through:none;
-  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>dpv
-  <font class="font6">n</font></td>
-  <td class=xl87 width=411 style='width:411pt;font-size:16.0pt;color:black;
-  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
-  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>Display
-  a field viewer image number <font class="font6">n</font><font class="font5"><span
-  style="mso-spacerun:yes">&nbsp;</span>(integer)</font></td>
- </tr>
- <tr height=20 style='height:20.0pt'>
-  <td height=20 class=xl86 style='height:20.0pt;font-size:16.0pt;color:black;
-  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:none;border-left:.5pt solid #C0504D;background:gray;mso-pattern:
-  black none'>Display picture current</td>
-  <td class=xl86 style='font-size:16.0pt;color:black;font-weight:400;
-  text-decoration:none;text-underline-style:none;text-line-through:none;
-  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>dpcv<span
-  style="mso-spacerun:yes">&nbsp;</span></td>
-  <td class=xl87 width=411 style='width:411pt;font-size:16.0pt;color:black;
-  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
-  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>Display
-  last picture taken<span style="mso-spacerun:yes">&nbsp;</span></td>
- </tr>
- <tr class=xl90 height=40 style='height:40.0pt'>
-  <td height=40 class=xl72 style='height:40.0pt;font-size:16.0pt;color:black;
-  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:.5pt solid #C0504D;border-left:.5pt solid #C0504D;background:
-  gray;mso-pattern:black none'>Subtract pictures and display</td>
-  <td class=xl72 style='font-size:16.0pt;color:black;font-weight:400;
-  text-decoration:none;text-underline-style:none;text-line-through:none;
-  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:.5pt solid #C0504D;border-left:none;background:gray;mso-pattern:
-  black none'>pdiffv <font class="font6">n m</font></td>
-  <td class=xl73 width=411 style='width:411pt;font-size:16.0pt;color:black;
-  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
-  border-bottom:.5pt solid #C0504D;border-left:none;background:gray;mso-pattern:
-  black none'>Subtract image # <font class="font6">m </font><font class="font5">(integer)
-  from  image # </font><font class="font6">n</font><font class="font5"><span
-  style="mso-spacerun:yes">&nbsp;</span>(integer) and display</font></td>
- </tr>
- <tr height=20 style='height:20.0pt'>
-  <td height=20 class=xl65 style='height:20.0pt'></td>
-  <td class=xl65></td>
-  <td class=xl69 width=411 style='width:411pt'></td>
- </tr>
- <tr height=25 style='height:25.0pt'>
-  <td height=25 class=xl67 style='height:25.0pt'>Move Telescope</td>
-  <td class=xl65></td>
-  <td class=xl69 width=411 style='width:411pt'></td>
- </tr>
- <tr height=25 style='height:25.0pt'>
-  <td height=25 class=xl83 style='height:25.0pt'>Action</td>
-  <td class=xl84>Command</td>
-  <td class=xl85 width=411 style='width:411pt'>Description</td>
- </tr>
- <tr height=40 style='height:40.0pt'>
-  <td height=40 class=xl80 style='height:40.0pt'>move east north</td>
-  <td class=xl81>en <font class="font6">e n</font></td>
-  <td class=xl82 width=411 style='width:411pt'>Move the telescope e (float,
-  arcsec) in RA and <font class="font6">n</font><font class="font5"><span
-  style="mso-spacerun:yes">&nbsp;</span>(float, arcsec) in Dec</font></td>
- </tr>
- <tr height=40 style='height:40.0pt'>
-  <td height=40 class=xl80 style='height:40.0pt'>move from cursor to cursor</td>
-  <td class=xl81>mt cu <font class="font6">n m</font></td>
-  <td class=xl82 width=411 style='width:411pt'>Moves the telescope so that an
-  object located in cursor box <font class="font6">n</font><font class="font5">
-  (integer) will now land in  cursor box </font><font class="font6">m</font><font
-  class="font5"><span style="mso-spacerun:yes">&nbsp;</span>(integer)</font></td>
- </tr>
- <tr height=20 style='height:20.0pt'>
-  <td height=20 class=xl65 style='height:20.0pt'></td>
-  <td class=xl65></td>
-  <td class=xl69 width=411 style='width:411pt'></td>
- </tr>
- <tr height=25 style='height:25.0pt'>
-  <td height=25 class=xl67 style='height:25.0pt'>Obtain Images</td>
-  <td class=xl65></td>
-  <td class=xl69 width=411 style='width:411pt'></td>
- </tr>
- <tr height=25 style='height:25.0pt'>
-  <td height=25 class=xl77 style='height:25.0pt'>Action</td>
-  <td class=xl78>Command</td>
-  <td class=xl79 width=411 style='width:411pt'>Description</td>
- </tr>
- <tr height=20 style='height:20.0pt'>
-  <td height=20 class=xl80 style='height:20.0pt'>Set the exposure time</td>
-  <td class=xl81>tintv <font class="font6">t</font></td>
-  <td class=xl82 width=411 style='width:411pt'>Sets the exposure time to t
-  (float, sec)</td>
- </tr>
- <tr height=20 style='height:20.0pt'>
-  <td height=20 class=xl80 style='height:20.0pt'>Set the Fowler sampling</td>
-  <td class=xl81>fowlerv <font class="font6">n</font></td>
-  <td class=xl82 width=411 style='width:411pt'>Sets the number <font
-  class="font6">n</font><font class="font5"><span
-  style="mso-spacerun:yes">&nbsp;</span>(integer) of Fowler Samples</font></td>
- </tr>
- <tr height=20 style='height:20.0pt'>
-  <td height=20 class=xl80 style='height:20.0pt'>Set the frame number</td>
-  <td class=xl81>framev <font class="font6">n</font></td>
-  <td class=xl82 width=411 style='width:411pt'>Sets the frame number <font
-  class="font6">n</font><font class="font5"><span
-  style="mso-spacerun:yes">&nbsp;</span>(integer) for the next<span
-  style="mso-spacerun:yes">&nbsp; </span>exposure</font></td>
- </tr>
- <tr height=20 style='height:20.0pt'>
-  <td height=20 class=xl80 style='height:20.0pt'>Set the number of coadds</td>
-  <td class=xl81>coaddv <font class="font6">n</font></td>
-  <td class=xl82 width=411 style='width:411pt'>Sets the number of coadds, <font
-  class="font6">n </font><font class="font5">(integer)</font></td>
- </tr>
- <tr height=20 style='height:20.0pt'>
-  <td height=20 class=xl80 style='height:20.0pt'>Set the object name</td>
-  <td class=xl81>objectv <font class="font6">s</font></td>
-  <td class=xl82 width=411 style='width:411pt'>Sets the name of the object in
-  the viewer to '<font class="font6">s' </font><font class="font5">(string)</font></td>
- </tr>
- <tr height=60 style='height:60.0pt'>
-  <td height=60 class=xl97 width=194 style='height:60.0pt;width:194pt'>Set the
-  object name for both the viewer and spectrograph</td>
-  <td class=xl81>object <font class="font6">s</font></td>
-  <td class=xl82 width=411 style='width:411pt'>Sets the name of the object in
-  the viewer and the spectrograph to '<font class="font6">s' </font><font
-  class="font5">(string)</font></td>
- </tr>
- <tr height=80 style='height:80.0pt'>
-  <td height=80 class=xl80 style='height:80.0pt'>Set the sampling mode</td>
-  <td class=xl81>sampmodev <font class="font6">n</font></td>
-  <td class=xl82 width=411 style='width:411pt'>Sets the sampling mode <font
-  class="font6">n</font><font class="font5"><span
-  style="mso-spacerun:yes">&nbsp;</span>(integer):<br>
-  1=single sampling, <br>
-  2=correlated double sampling, <br>
-  3=multiple correlated double sampling</font></td>
- </tr>
- <tr height=40 style='height:40.0pt'>
-  <td height=40 class=xl97 width=194 style='height:40.0pt;width:194pt'>Show the
-  current image settings</td>
-  <td class=xl81>showv</td>
-  <td class=xl82 width=411 style='width:411pt'>Shows all of the settings for
-  the current exposure</td>
- </tr>
- <tr height=60 style='height:60.0pt'>
-  <td height=60 class=xl97 width=194 style='height:60.0pt;width:194pt'>Show the
-  current image setting in an auto-updated window</td>
-  <td class=xl81>xshowv</td>
-  <td class=xl82 width=411 style='width:411pt'>Pops up window that shows the
-  current image settings and auto-updates the display as the settings change</td>
- </tr>
- <tr height=20 style='height:20.0pt'>
-  <td height=20 class=xl80 style='height:20.0pt'>Take an Image</td>
-  <td class=xl81>goiv</td>
-  <td class=xl82 width=411 style='width:411pt'>Takes the next exposure</td>
- </tr>
- <tr height=20 style='height:20.0pt'>
-  <td height=20 class=xl65 style='height:20.0pt'></td>
-  <td class=xl65></td>
-  <td class=xl69 width=411 style='width:411pt'></td>
- </tr>
- <tr height=20 style='height:20.0pt'>
-  <td height=20 class=xl65 style='height:20.0pt'></td>
-  <td class=xl65></td>
-  <td class=xl69 width=411 style='width:411pt'></td>
- </tr>
  <tr height=20 style='height:20.0pt'>
   <td height=20 class=xl65 style='height:20.0pt'></td>
   <td class=xl65></td>
@@ -1008,11 +914,11 @@ td
   font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
   none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
   border-bottom:none;border-left:.5pt solid #C0504D;background:gray;mso-pattern:
-  black none'>Display picture current</td>
+  black none'>Display last picture</td>
   <td class=xl86 style='font-size:16.0pt;color:black;font-weight:400;
   text-decoration:none;text-underline-style:none;text-line-through:none;
   font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>dpcs<span
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>dps lp<span
   style="mso-spacerun:yes">&nbsp;</span></td>
   <td class=xl87 width=411 style='width:411pt;font-size:16.0pt;color:black;
   font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
@@ -1089,34 +995,120 @@ td
   <td class=xl72 style='font-size:16.0pt;color:black;font-weight:400;
   text-decoration:none;text-underline-style:none;text-line-through:none;
   font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>dz
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>dw --z n
   <font class="font6">z</font></td>
   <td class=xl73 width=411 style='width:411pt;font-size:16.0pt;color:black;
   font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
   none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
   border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>Displays
-  markers that show the rest wavelength given an input redshift, <font
+  markers that show the rest wavelength given an input redshift n (float), <font
   class="font6">z</font><font class="font5"><span
   style="mso-spacerun:yes">&nbsp;</span>(float)</font></td>
  </tr>
+ <tr height=20 style='height:20.0pt'>
+  <td height=20 class=xl65 style='height:20.0pt'></td>
+  <td class=xl65></td>
+  <td class=xl69 width=411 style='width:411pt'></td>
+ </tr>
+ <tr height=20 style='height:20.0pt'>
+  <td height=20 class=xl65 style='height:20.0pt'></td>
+  <td class=xl65></td>
+  <td class=xl69 width=411 style='width:411pt'></td>
+ </tr>
+ <tr height=20 style='height:20.0pt'>
+  <td height=20 class=xl88 style='height:20.0pt'>&nbsp;</td>
+  <td class=xl88>&nbsp;</td>
+  <td class=xl89 width=411 style='width:411pt'>&nbsp;</td>
+ </tr>
+ <tr class=xl65 height=20 style='height:20.0pt'>
+  <td height=20 class=xl65 style='height:20.0pt'></td>
+  <td class=xl65></td>
+  <td class=xl69 width=411 style='width:411pt'></td>
+ </tr>
+ <tr height=25 style='height:25.0pt'>
+  <td height=25 class=xl67 style='height:25.0pt'>Obtain Images</td>
+  <td class=xl65></td>
+  <td class=xl69 width=411 style='width:411pt'></td>
+ </tr>
+ <tr height=25 style='height:25.0pt'>
+  <td height=25 class=xl77 style='height:25.0pt'>Action</td>
+  <td class=xl78>Command</td>
+  <td class=xl79 width=411 style='width:411pt'>Description</td>
+ </tr>
+ <tr height=20 style='height:20.0pt'>
+  <td height=20 class=xl80 style='height:20.0pt'>Set the exposure time</td>
+  <td class=xl81>tintv <font class="font6">t</font></td>
+  <td class=xl82 width=411 style='width:411pt'>Sets the exposure time to t
+  (float, sec)</td>
+ </tr>
+ <tr height=20 style='height:20.0pt'>
+  <td height=20 class=xl80 style='height:20.0pt'>Set the Fowler sampling</td>
+  <td class=xl81>fowlerv <font class="font6">n</font></td>
+  <td class=xl82 width=411 style='width:411pt'>Sets the number <font
+  class="font6">n</font><font class="font5"><span
+  style="mso-spacerun:yes">&nbsp;</span>(integer) of Fowler Samples</font></td>
+ </tr>
+ <tr height=20 style='height:20.0pt'>
+  <td height=20 class=xl80 style='height:20.0pt'>Set the frame number</td>
+  <td class=xl81>framev <font class="font6">n</font></td>
+  <td class=xl82 width=411 style='width:411pt'>Sets the frame number <font
+  class="font6">n</font><font class="font5"><span
+  style="mso-spacerun:yes">&nbsp;</span>(integer) for the next<span
+  style="mso-spacerun:yes">&nbsp; </span>exposure</font></td>
+ </tr>
+ <tr height=20 style='height:20.0pt'>
+  <td height=20 class=xl80 style='height:20.0pt'>Set the number of coadds</td>
+  <td class=xl81>coaddv <font class="font6">n</font></td>
+  <td class=xl82 width=411 style='width:411pt'>Sets the number of coadds, <font
+  class="font6">n </font><font class="font5">(integer)</font></td>
+ </tr>
+ <tr height=20 style='height:20.0pt'>
+  <td height=20 class=xl80 style='height:20.0pt'>Set the object name</td>
+  <td class=xl81>objectv <font class="font6">s</font></td>
+  <td class=xl82 width=411 style='width:411pt'>Sets the name of the object in
+  the viewer to '<font class="font6">s' </font><font class="font5">(string)</font></td>
+ </tr>
+ <tr height=60 style='height:60.0pt'>
+  <td height=60 class=xl97 width=194 style='height:60.0pt;width:194pt'>Set the
+  object name for both the viewer and spectrograph</td>
+  <td class=xl81>object <font class="font6">s</font></td>
+  <td class=xl82 width=411 style='width:411pt'>Sets the name of the object in
+  the viewer and the spectrograph to '<font class="font6">s' </font><font
+  class="font5">(string)</font></td>
+ </tr>
+ <tr height=80 style='height:80.0pt'>
+  <td height=80 class=xl80 style='height:80.0pt'>Set the sampling mode</td>
+  <td class=xl81>sampmodev <font class="font6">n</font></td>
+  <td class=xl82 width=411 style='width:411pt'>Sets the sampling mode <font
+  class="font6">n</font><font class="font5"><span
+  style="mso-spacerun:yes">&nbsp;</span>(integer):<br>
+  1=single sampling, <br>
+  2=correlated double sampling, <br>
+  3=multiple correlated double sampling</font></td>
+ </tr>
  <tr height=40 style='height:40.0pt'>
-  <td height=40 class=xl73 width=194 style='height:40.0pt;width:194pt;
-  font-size:16.0pt;color:black;font-weight:400;text-decoration:none;text-underline-style:
-  none;text-line-through:none;font-family:Calibri;border-top:.5pt solid #C0504D;
-  border-right:none;border-bottom:.5pt solid #C0504D;border-left:.5pt solid #C0504D;
-  background:gray;mso-pattern:black none'>Show typical emission-line features</td>
-  <td class=xl72 style='font-size:16.0pt;color:black;font-weight:400;
-  text-decoration:none;text-underline-style:none;text-line-through:none;
-  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:.5pt solid #C0504D;border-left:none;background:gray;mso-pattern:
-  black none'>dez <font class="font6">z</font></td>
-  <td class=xl73 width=411 style='width:411pt;font-size:16.0pt;color:black;
-  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
-  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
-  border-bottom:.5pt solid #C0504D;border-left:none;background:gray;mso-pattern:
-  black none'>Displays markers that show the typical nebular emission features
-  at a given redshift,<font class="font6"> z</font><font class="font5"><span
-  style="mso-spacerun:yes">&nbsp;</span>(float)</font></td>
+  <td height=40 class=xl97 width=194 style='height:40.0pt;width:194pt'>Show the
+  current image settings</td>
+  <td class=xl81>showv</td>
+  <td class=xl82 width=411 style='width:411pt'>Shows all of the settings for
+  the current exposure</td>
+ </tr>
+ <tr height=60 style='height:60.0pt'>
+  <td height=60 class=xl97 width=194 style='height:60.0pt;width:194pt'>Show the
+  current image setting in an auto-updated window</td>
+  <td class=xl81>xshowv</td>
+  <td class=xl82 width=411 style='width:411pt'>Pops up window that shows the
+  current image settings and auto-updates the display as the settings change</td>
+ </tr>
+ <tr height=20 style='height:20.0pt'>
+  <td height=20 class=xl80 style='height:20.0pt'>Take an Image</td>
+  <td class=xl81>goiv</td>
+  <td class=xl82 width=411 style='width:411pt'>Takes the next exposure</td>
+ </tr>
+ <tr height=20 style='height:20.0pt'>
+  <td height=20 class=xl65 style='height:20.0pt'></td>
+  <td class=xl65></td>
+  <td class=xl69 width=411 style='width:411pt'></td>
  </tr>
  <tr height=20 style='height:20.0pt'>
   <td height=20 class=xl65 style='height:20.0pt'></td>
@@ -1204,6 +1196,8 @@ td
   <td class=xl81>gois</td>
   <td class=xl82 width=411 style='width:411pt'>Takes the next exposure</td>
  </tr>
+
+
 </table>
 
 </body>
