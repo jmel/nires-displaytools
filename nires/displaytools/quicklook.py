@@ -14,6 +14,8 @@ from nires.displaytools.ds9 import Ds9
 from nires.settings import TMPDIR
 
 LOG = logging.getLogger(__name__)
+NIRES_AUTODISPLAY_STOP = "NIRES_AUTODISPLAY_STOP"
+NIRES_AUTODISPLAY_START = "NIRES_AUTODISPLAY_START"
 
 
 class QuickLook:
@@ -38,8 +40,7 @@ class QuickLook:
 
         :return:
         """
-        done = False
-        while not done:
+        while os.path.isfile("{}/{}".format(TMPDIR, NIRES_AUTODISPLAY_START)):
             self.run_inst("v")
             self.run_inst("s")
             sleep(2)
@@ -54,6 +55,9 @@ class QuickLook:
         lp = helpers.get_most_recent_file(self.data_dir, inst)
         if lp > self.lp[inst]:
             self.lp[inst] = lp
+
+            # now that you have a new file wait briefly to write out
+            sleep(0.5)
             self.update_display(inst, self.lp[inst])
 
     def update_display(self, inst, lp):
@@ -74,16 +78,19 @@ class QuickLook:
 
 
 @click.command()
-@click.option("option", type=click.Choice(["auto", "manual"]), nargs=1)
+@click.argument("option", type=click.Choice(["auto", "manual"]), nargs=1)
 @click.option('--d', default=".")
 def run(option, d):
 
-    if option =="manual":
-        QuickLook(data_dir=d)
-        os.environ["AUTODISPLAY_STATUS"] = "STOP"
+    ql = QuickLook(data_dir=d)
+    if option == "manual":
+        os.system("touch {}/{}".format(TMPDIR, NIRES_AUTODISPLAY_STOP))
+        os.system("rm {}/{}".format(TMPDIR, NIRES_AUTODISPLAY_START))
     elif option == "auto":
-        ql = QuickLook(data_dir=d)
-        os.environ["AUTODISPLAY_STATUS"] = "RUN"
+        os.system("touch {}/{}".format(TMPDIR, NIRES_AUTODISPLAY_START))
+        os.system("rm {}/{}".format(TMPDIR, NIRES_AUTODISPLAY_STOP))
+        ql.update_display("v", ql.lp["v"])
+        ql.update_display("s", ql.lp["s"])
         ql.run()
 
 if __name__ == '__main__':
