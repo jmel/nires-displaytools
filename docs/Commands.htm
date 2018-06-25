@@ -601,17 +601,71 @@ td
   <td class=xl87 style='font-size:16.0pt;color:black;font-weight:400;
   text-decoration:none;text-underline-style:none;text-line-through:none;
   font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>Set buffer image</td>
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>Set viewer buffer image</td>
   <td class=xl86 style='font-size:16.0pt;color:black;font-weight:400;
   text-decoration:none;text-underline-style:none;text-line-through:none;
   font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>bp(s/v) n </td>
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>bpv <font class="font6">n</font> </td>
   <td class=xl87 width=411 style='width:411pt;font-size:16.0pt;color:black;
   font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
   none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
   border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>
-   Set the buffer image of the auto-display tool to the image number n. If set will do pdiff.
-   If not set will do a dp. To turn off set buffer use 'none'
+   Set the buffer image of the Viewer display to the image number <font class="font6">n</font>.
+   If set, auto-display will do a pdiff.
+   If not set auto-display will do a dp.
+  </td>
+ </tr>
+ </tr>
+  <tr height=20 style='height:20.0pt'>
+  <td class=xl87 style='font-size:16.0pt;color:black;font-weight:400;
+  text-decoration:none;text-underline-style:none;text-line-through:none;
+  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>Remove viewer buffer image</td>
+  <td class=xl86 style='font-size:16.0pt;color:black;font-weight:400;
+  text-decoration:none;text-underline-style:none;text-line-through:none;
+  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>bpv <font class="font6">none</font> </td>
+  <td class=xl87 width=411 style='width:411pt;font-size:16.0pt;color:black;
+  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
+  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>
+   Remove the buffer image of the auto-display.
+  </td>
+ </tr>
+ </tr>
+  <tr height=20 style='height:20.0pt'>
+  <td class=xl87 style='font-size:16.0pt;color:black;font-weight:400;
+  text-decoration:none;text-underline-style:none;text-line-through:none;
+  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>Set spectral buffer image</td>
+  <td class=xl86 style='font-size:16.0pt;color:black;font-weight:400;
+  text-decoration:none;text-underline-style:none;text-line-through:none;
+  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>bps <font class="font6">n</font> </td>
+  <td class=xl87 width=411 style='width:411pt;font-size:16.0pt;color:black;
+  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
+  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>
+   Set the buffer image for the spectral auto-display to the image number <font class="font6">n</font>.
+   If set, auto-display will do a pdiff.
+   If not set auto-display will do a dp.
+  </td>
+ </tr>
+ </tr>
+  <tr height=20 style='height:20.0pt'>
+  <td class=xl87 style='font-size:16.0pt;color:black;font-weight:400;
+  text-decoration:none;text-underline-style:none;text-line-through:none;
+  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>Remove spectral buffer image</td>
+  <td class=xl86 style='font-size:16.0pt;color:black;font-weight:400;
+  text-decoration:none;text-underline-style:none;text-line-through:none;
+  font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>bps <font class="font6">none</font> </td>
+  <td class=xl87 width=411 style='width:411pt;font-size:16.0pt;color:black;
+  font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
+  none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>
+   Remove the buffer image of the spectral auto-display.
   </td>
  </tr>
 
@@ -1097,15 +1151,13 @@ td
   <td class=xl72 style='font-size:16.0pt;color:black;font-weight:400;
   text-decoration:none;text-underline-style:none;text-line-through:none;
   font-family:Calibri;border-top:.5pt solid #C0504D;border-right:none;
-  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>dw --z n
-  <font class="font6">z</font></td>
+  border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>dw --z
+  <font class="font6">n</font></td>
   <td class=xl73 width=411 style='width:411pt;font-size:16.0pt;color:black;
   font-weight:400;text-decoration:none;text-underline-style:none;text-line-through:
   none;font-family:Calibri;border-top:.5pt solid #C0504D;border-right:.5pt solid #C0504D;
   border-bottom:none;border-left:none;background:gray;mso-pattern:black none'>Displays
-  markers that show the rest wavelength given an input redshift n (float), <font
-  class="font6">z</font><font class="font5"><span
-  style="mso-spacerun:yes">&nbsp;</span>(float)</font></td>
+  markers that show the rest wavelength given an input redshift <font class="font6">n</font> (float)</td>
  </tr>
  <tr height=20 style='height:20.0pt'>
   <td height=20 class=xl65 style='height:20.0pt'></td>
