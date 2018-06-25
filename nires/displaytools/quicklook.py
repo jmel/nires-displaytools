@@ -2,6 +2,7 @@
 # run quicklook
 
 from time import sleep
+import os
 import logging
 import click
 
@@ -9,6 +10,8 @@ import nires.displaytools.helpers as helpers
 import nires.displaytools.pdiff as pdiff
 import nires.displaytools.dp as dp
 from nires.displaytools.bp import get_buffer
+from nires.displaytools.ds9 import Ds9
+from nires.settings import TMPDIR
 
 LOG = logging.getLogger(__name__)
 
@@ -26,8 +29,8 @@ class QuickLook:
             "s": helpers.get_most_recent_file(self.data_dir, "s")
         }
 
-        self.update_display("v", self.lp["v"])
-        self.update_display("s", self.lp["s"])
+        Ds9("Spectrograph")
+        Ds9("Viewer")
 
     def run(self):
         """
@@ -71,11 +74,16 @@ class QuickLook:
 
 
 @click.command()
-@click.option("-autodisplay", nargs=1)
+@click.option("option", type=click.Choice(["auto", "manual"]), nargs=1)
 @click.option('--d', default=".")
-def run(autodisplay, d):
-    ql = QuickLook(data_dir=d)
-    if autodisplay:
+def run(option, d):
+
+    if option =="manual":
+        QuickLook(data_dir=d)
+        os.environ["AUTODISPLAY_STATUS"] = "STOP"
+    elif option == "auto":
+        ql = QuickLook(data_dir=d)
+        os.environ["AUTODISPLAY_STATUS"] = "RUN"
         ql.run()
 
 if __name__ == '__main__':
