@@ -72,7 +72,7 @@ class QuickLook:
         if bp and bp != "none":
             temp_name = pdiff.construct_temp_name(inst)
             pdiff.diff_image(lp, bp, temp_name=temp_name, data_dir=self.data_dir)
-            dp.display_image(inst, fname=temp_name, data_dir=self.data_dir)
+            dp.display_image(inst, fname=temp_name, data_dir=TMPDIR)
         else:
             dp.display_image(inst, fname=lp, data_dir=self.data_dir)
 
