@@ -57,7 +57,7 @@ class QuickLook:
             self.lp[inst] = lp
 
             # now that you have a new file wait briefly to write out
-            sleep(0.5)
+            sleep(2)
             self.update_display(inst, self.lp[inst])
 
     def update_display(self, inst, lp):
