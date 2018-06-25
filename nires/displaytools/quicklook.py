@@ -68,7 +68,7 @@ class QuickLook:
         :param lp:
         :return:
         """
-        bp = get_buffer(self.data_dir, inst)
+        bp = get_buffer(inst)
         if bp and bp != "none":
             temp_name = pdiff.construct_temp_name(inst)
             pdiff.diff_image(lp, bp, temp_name=temp_name, data_dir=self.data_dir)
