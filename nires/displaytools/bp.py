@@ -12,7 +12,7 @@ LOG = logging.getLogger(__name__)
 METADATA_FILE = ".metadata"
 
 
-def get_buffer(tmp_dir, inst):
+def get_buffer(inst, tmp_dir=TMPDIR):
     """
     get the buffer image if it exists
     :param tmp_dir:
@@ -57,7 +57,7 @@ def run(inst, fnum, d):
     """
     try:
         if fnum == "show":
-            LOG.warning("Buffer image for instrument: %s is %s", inst, get_buffer(d, inst))
+            LOG.warning("Buffer image for instrument: %s is %s", inst, get_buffer(inst))
         elif fnum == "none":
             set_buffer_image(inst, "none")
         else:
