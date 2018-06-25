@@ -174,7 +174,7 @@ class Ds9:
             s = "regions group {} delete".format(group)
         self.xpaset(s)
 
-    def wavelength_delete(self):
+    def region_delete(self):
         """
         delete all of the wavelength regions
         :return:

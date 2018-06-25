@@ -22,6 +22,7 @@ def display_image(inst, fname, data_dir="."):
     title = helpers.return_instrument(inst)
     ds9 = Ds9(title)
     ds9.region_save(data_dir=TMPDIR)
+    ds9.region_delete()
     ds9.open("{}/{}".format(data_dir, fname), 1)
     ds9.region_open(data_dir=TMPDIR)
 
