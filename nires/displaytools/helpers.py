@@ -1,5 +1,4 @@
 import astropy.io.fits as pf
-import glob
 import os
 import fnmatch
 import logging
@@ -50,7 +49,11 @@ def get_most_recent_file(data_dir, prefix="s", suffix=".fits"):
     """
     try:
         files = sorted([f for f in os.listdir(data_dir) if f.startswith(prefix[0]) and f.endswith(suffix) and len(f) < 22])
-        return files[-1]
+        if len(files) > 0:
+            if os.path.getsize("{}/{}".format(data_dir, files[-1])) > 0:
+                return files[-1]
+            else:
+                return files[-2]
     except IndexError:
         LOG.warning("Data Directory is empty, cannot display image")
     return None
