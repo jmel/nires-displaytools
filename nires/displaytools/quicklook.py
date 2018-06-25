@@ -43,7 +43,7 @@ class QuickLook:
         while os.path.isfile("{}/{}".format(TMPDIR, NIRES_AUTODISPLAY_START)):
             self.run_inst("v")
             self.run_inst("s")
-            sleep(2)
+            sleep(3)
 
     def run_inst(self, inst):
         """
